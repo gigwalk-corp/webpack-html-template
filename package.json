@@ -1,0 +1,36 @@
+{
+  "name": "@gigwalk/webpack-html-template",
+  "version": "1.0.0",
+  "description": "Webpack HTML template generator using preprocess.",
+  "license": "MIT",
+  "repository": "gigwalk-corp/webpack-html-template",
+  "author": {
+    "name": "Steven Bassett",
+    "email": "steven.j.bassett@gmail.com",
+    "url": "gigwalk.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "prepublish": "babel src --out-dir lib --source-maps"
+  },
+  "files": [
+    "lib/index.js"
+  ],
+  "keywords": [
+    "webpack",
+    "webpack"
+  ],
+  "dependencies": {
+    "bluebird": "<4",
+    "preprocess": "<4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.2",
+    "babel-core": "^6.1.2",
+    "babel-preset-es2015": "^6.1.2",
+    "mocha": "*"
+  }
+}

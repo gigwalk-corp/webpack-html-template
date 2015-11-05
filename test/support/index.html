@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% if current_user.getOrganizationID() == 7 %}CROSSMARK{% else %}Gigwalk{% endif %} {% if debug_mode_string != '0' %}(DEBUG){% endif %}</title>
+
+    <base href="/" />
+
+    <script src="/platform/static/js/apps/shared/dev/util/UserAgent.js"></script>
+    {% if debug_mode_string == '1' %}
+    <!-- <script charset="UTF-8" src="/platform/static/js/vendors/build/Vendor.all.js"></script> -->
+    {% else %}
+    <!-- <script charset="UTF-8" src="/platform/static/js/vendors/build/Vendor.all.min.js"></script> -->
+    {% endif %}
+
+
+    <!-- Global CSS and JS
+    ================================================== -->
+
+    <link href="/platform/static/css/previous_sass/vendor/font-awesome.css" media="screen" rel="stylesheet" />
+    <link href="/platform/static/css/previous_sass/vendor/bootstrap.css" media="screen" rel="stylesheet" />
+    <link href="/platform/static/css/previous_sass/vendor/datepicker.css" media="screen" rel="stylesheet" />
+
+    <!-- Brand CSS
+    ================================================== -->
+
+    <!-- Start module stylesheets -->
+
+    <!-- Old CSS -->
+    <link rel="stylesheet" type="text/css" href="/platform/static/css/previous_sass/style.css?v=2015114_14.49.25" />
+
+    <!-- New CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="/platform/static/css/style.css?v=2015114_14.49.25" /> -->
+
+    <link href="/platform/static/css/previous_sass/brand/gigwalk/css/gigwalk.css?v=2015114_14.49.25" media="screen" rel="stylesheet" />
+
+    {% if current_user.getOrganizationID() == 7 %}
+
+        <link href="/platform/static/css/previous_sass/brand/crossmark/css/crossmark.css?v=2015114_14.49.25" media="screen" rel="stylesheet" />
+        <link href="/platform/static/css/previous_sass/brand/crossmark/images/favicon.ico" rel="shortcut icon" >
+
+    {% else %}
+
+
+    <!-- device and shortcut icons
+    ================================================== -->
+
+        <link rel="apple-touch-icon" href="brand/gigwalk/images/apple-touch-icon.png" />
+        <link href="/platform/static/css/previous_sass/brand/gigwalk/images/icon-rounded.png" rel="shortcut icon" >
+        <link href="/platform/static/css/previous_sass/brand/gigwalk/images/favicon.ico" rel="shortcut icon" >
+
+    {% endif %}
+
+    <script>
+
+        window.GW = window.GW || {server_config:{}};
+        window.GW.setServerConfigVar = function(key,value){window.GW.server_config[key] = value;};
+        window.GW.getServerConfigVar = function(key){return window.GW.server_config[key];};
+        GW.cachebusting = "2015114_14.49.25";
+        GW.startTime = new Date().getTime();
+
+        {{debug_mode_string}}
+
+        //Passing server vars to client code
+        GW.setServerConfigVar("gigwalk_api_server_hostname","{{gigwalk_api_server_hostname}}");
+        GW.setServerConfigVar("debug_mode",{{debug_mode_string}});
+        GW.setServerConfigVar("auth_token","{{current_user.getAuthToken()}}");
+        GW.setServerConfigVar("role","{{current_user.getRole()}}");
+        GW.setServerConfigVar("email","{{current_user.getEmail()}}");
+        {% if csmk_timing_template_id and csmk_timing_target_list_id %}
+            GW.setServerConfigVar("csmk_timing_template_id",{{csmk_timing_template_id}});
+            GW.setServerConfigVar("csmk_timing_target_list_id",{{csmk_timing_target_list_id}});
+        {% endif %}
+
+    </script>
+
+    <script>
+        var doc = document.documentElement;
+        doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
+</head>
+<body>
+<div class='page-holder'>
+
+    <header></header>
+
+    <div class="main wrapper" data-module="main-wrapper" data-layout-buffered style="display:none">
+        <nav data-module="sidenav" class="sidenav selective-hide"></nav>
+        <div data-module="gigwalk-app" class="Projects inner wrapper">
+            <nav class="tabnav" data-module="main-tabs"></nav>
+            <div data-app-buffering class="glyphicon glyphicon-refresh loading-tab"></div>
+            <div data-app-buffered>
+                <!-- the content of the app comes here -->
+            </div>
+        </div>
+    </div>
+    <div data-layout-buffering class="glyphicon glyphicon-refresh loading-tab"></div>
+    <footer></footer>
+</div>
+<div class="lightbox"><div class="lb-shadow photos lightbox" style="display: none;"></div></div>
+
+<script charset="UTF-8" src="//localhost:8080/platform/static/build/shared.bundle.js"></script>
+<script charset="UTF-8" src="//localhost:8080/platform/static/build/MainApp.bundle.js"></script>
+</body>
+</html>
