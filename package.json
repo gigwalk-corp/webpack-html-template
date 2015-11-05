@@ -1,6 +1,6 @@
 {
   "name": "@gigwalk/webpack-html-template",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Webpack HTML template generator using preprocess.",
   "license": "MIT",
   "repository": "gigwalk-corp/webpack-html-template",
